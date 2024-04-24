@@ -8,6 +8,9 @@ on:
   pull_request:
     branches:
       - main
+  issues:
+    types: [opened, edited, milestoned, reopened, closed, assigned, unassigned, labeled, unlabeled, locked, unlocked, transferred, milestoned, demilestoned]
+
   workflow_dispatch:
 
 # -----------------------------------
@@ -15,17 +18,18 @@ on:
   # whaterver i run in the workflow will be executed in the src directory
   # and the commands will be executed in bash shell
 
-# defaults:
-#   run:
-#     shell: bash
+defaults:
+  run:
+    shell: bash
 #     working-directory: ./src
     
 # -----------------------------------
 
 jobs:
+
   ci:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -51,6 +55,21 @@ jobs:
         name: sports-club-jar
         path: ./target/sports-club-0.0.1-SNAPSHOT.jar
 
+  # another stage to put comment for testing purpose
+
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+     - name : Comment on issue
+       uses: peter-evans/create-or-update-comment@v4
+       with:
+         issue-number: 1
+         body: |
+           This is a multi-line test comment
+           - With GitHub **Markdown** :sparkles:
+           - Created by [create-or-update-comment][1]
+           [1]: https://github.com/peter-evans/create-or-update-comment
+         reactions: '+1'
       
     
     
