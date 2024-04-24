@@ -1,0 +1,53 @@
+# 
+name: Workflow for sports club CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+# -----------------------------------
+  # i will use bash shell and set the working directory to src
+  # whaterver i run in the workflow will be executed in the src directory
+  # and the commands will be executed in bash shell
+
+# defaults:
+#   run:
+#     shell: bash
+#     working-directory: ./src
+    
+# -----------------------------------
+
+jobs:
+  ci:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'  
+
+    - name: Build with Maven
+      run: mvn compile
+
+    - name: Test with Maven
+      run: mvn test -DskipCompile
+
+    - name: Create jar file
+      run: mvn package -DskipTests -DskipCompile
+
+    - name: Upload jar file
+      uses: actions/upload-artifact@v2
+      with:
+        name: sports-club-jar
+        path: ./target/sports-club-0.0.1-SNAPSHOT.jar
+        
+      
+    
+    
