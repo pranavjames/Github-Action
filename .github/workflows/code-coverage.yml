@@ -1,0 +1,45 @@
+name: Code Coverage on pull_request
+on :
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request Number'
+        required: true
+        # default: '1'
+        # can also get pull request number from the event payload
+        #  ${{ github.event.pull_request.number }}
+        #  ${{ github.event.inputs.pr_number }}
+        #  ${{ github.event.inputs.PR_number }}
+
+jobs:
+  code-coverage:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name : Checkout code
+      uses: actions/checkout@v2
+
+    - name: Verify PR number and status
+      run: |
+        if [[ "${{ github.event.pull_request.number }}" != "${{ github.event.inputs.pr_number }}" || "${{ github.event.pull_request.state }}" != "open" ]]; then
+          echo "Invalid PR number or pull request is not open. Exiting..."
+          exit 1
+        fi
+
+#  Look at this
+# There are some environment variables that are available for particular job
+# we cand differentiate that using environament keyword
+# We have to create a environment for that job
+# You can configurations for that environment
+    # deploy_production:
+    # environment: production
+    # name: 'Deploy to production'
+    # runs-on: ubuntu-latest
+    # needs: deploy_staging
+    
+    # steps:
+    
+    # - uses: actions/checkout@v2
+    #   name: 'Checkout repository' 
+
+ 
