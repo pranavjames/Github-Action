@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Use reusable workflow
          
-      # if it is in the same repository
-        # uses: ./.github/workflows/reusable-workflow.yml
-
-        uses: pranavjames/Github-Action/.github/workflows/reusable-workflow.yml@main
+      # if it is in the different repository
+       # uses: pranavjames/Github-Action/.github/workflows/reusable-workflow.yml@main
+       
+        uses: ./.github/workflows/reusable-workflow.yml       
         with:
           context: .
           push: true
