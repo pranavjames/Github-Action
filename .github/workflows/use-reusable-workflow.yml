@@ -5,17 +5,13 @@ on:
   
 jobs:
   
-  use-reusable-workflow:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Use reusable workflow from same repository
-         
+  use-reusable-workflow:      
       # if it is in the different repository
        # uses: pranavjames/Github-Action/.github/workflows/reusable-workflow.yml@main
-       
-        uses: ./.github/workflows/reusable-workflow.yml       
-        # with:
-        #   context: .
-        #   push: true
-        #   tags: ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot:latest
+
+      # if it is in the same repository
+        uses: ./.github/workflows/reusable-workflow.yml@main
+        # uses: pranavjames/Github-Action/.github/workflows/reusable-workflow.yml@main       
+        secrets: 
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
