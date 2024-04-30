@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Use reusable workflow
+      - name: Use reusable workflow from same repository
          
       # if it is in the different repository
        # uses: pranavjames/Github-Action/.github/workflows/reusable-workflow.yml@main
