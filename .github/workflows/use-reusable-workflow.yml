@@ -1,14 +1,16 @@
 name: Use reusable workflow
+
 on:
   workflow_dispatch:
-
+  
 jobs:
   
   use-reusable-workflow:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Use reusable workflow
-
+         
       # if it is in the same repository
         # uses: ./.github/workflows/reusable-workflow.yml
 
