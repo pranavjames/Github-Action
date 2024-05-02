@@ -1,0 +1,10 @@
+name: Calling Workflow 1
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call_workflow_1:
+        uses: ./.github/workflows/called_workflow_1.yml
