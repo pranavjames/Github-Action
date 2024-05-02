@@ -14,11 +14,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Add your steps here
-
       - name: Build and test
         run: |
           echo "This is called_workflow here..........----  Building and testing..."
           # Add your build and test commands here
 
-      # Add more steps if needed
+      
+
+  next_build: 
+     runs-on: ubuntu-latest
+ 
+     steps:
+       - name: Checkout repository
+         uses: actions/checkout@v2
+          
+       - name: Build and test
+         run: |
+           echo "Build and Test .... This is next build in called workflow 1"
+          
+ 
