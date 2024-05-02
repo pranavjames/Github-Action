@@ -15,5 +15,21 @@ jobs:
           SECRET_TOKEN1: ${{ secrets.DOCKERHUB_USERNAME }}
           SECRET_TOKEN2: ${{ secrets.DOCKERHUB_TOKEN }}   
 
+      #  secrets: inherit # if no need to specify the secrets it will take the secrets automatically
+  call_workflow_use_matrix:
+       strategy:
+          matrix:
+           vars: [var1, var2, var3]
+       uses: ./.github/workflows/called_workflow_1.yml
+       with: 
+          var1: ${{ matrix.vars }}
+          var2: ${{ matrix.vars }}
+       secrets:
+          SECRET_TOKEN1: ${{ secrets.DOCKERHUB_USERNAME }}
+          SECRET_TOKEN2: ${{ secrets.DOCKERHUB_TOKEN }}   
+
+
+
   call_workflow_2:
        uses: ./.github/workflows/called_workflow_2.yml     
+       
