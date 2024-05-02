@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and test
         run: |
-          echo "var1 => {{ inputs.var1 }} This is called_workflow here..........----  Building and testing..."
+          echo "var1 => ${{ inputs.var1 }} This is called_workflow here..........----  Building and testing..."
           # Add your build and test commands here
 
       
@@ -40,6 +40,6 @@ jobs:
 
        - name: Build and test
          run: |
-           echo "var2 => {{ inputs.var2 }} Build and Test .... This is next build in called workflow 1"
+           echo "var2 => ${{ inputs.var2 }} Build and Test .... This is next build in called workflow 1"
           
  
