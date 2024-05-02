@@ -8,6 +8,9 @@ on:
 jobs:
   call_workflow_1:
        uses: ./.github/workflows/called_workflow_1.yml
+       with: 
+          var1: "Hello"
+          var2: 20
 
   call_workflow_2:
        uses: ./.github/workflows/called_workflow_2.yml     

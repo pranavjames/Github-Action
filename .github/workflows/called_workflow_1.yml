@@ -5,6 +5,16 @@ on:
     branches:
       - main
   workflow_call:
+    inputs:
+      var1:
+        type: string
+        description: "Variable 1"
+        required: true
+
+      var2:
+        type: number
+        description: "Variable 2"
+        # default: 10
 
 jobs:
   build:
@@ -16,7 +26,7 @@ jobs:
 
       - name: Build and test
         run: |
-          echo "This is called_workflow here..........----  Building and testing..."
+          echo "var1 => {{ inputs.var1 }} This is called_workflow here..........----  Building and testing..."
           # Add your build and test commands here
 
       
@@ -27,9 +37,9 @@ jobs:
      steps:
        - name: Checkout repository
          uses: actions/checkout@v2
-          
+
        - name: Build and test
          run: |
-           echo "Build and Test .... This is next build in called workflow 1"
+           echo "var2 => {{ inputs.var2 }} Build and Test .... This is next build in called workflow 1"
           
  
