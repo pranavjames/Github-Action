@@ -7,7 +7,7 @@ on:
   workflow_call:
     inputs:
       var1:
-        type: string
+        type: string  # in variable case it is mandatory
         description: "Variable 1"
         required: true
 
@@ -15,6 +15,15 @@ on:
         type: number
         description: "Variable 2"
         # default: 10
+
+    secrets:
+      SECRET_TOKEN1: 
+        description: "A secret token"
+        required: true  # in secret case it is mandatory
+
+      SECRET_TOKEN2:
+        description: "Another secret token"
+        required: true  
 
 jobs:
   build:
@@ -27,7 +36,7 @@ jobs:
       - name: Build and test
         run: |
           echo "var1 => ${{ inputs.var1 }} This is called_workflow here..........----  Building and testing..."
-          # Add your build and test commands here
+          echo "secret token 1 => ${{ secrets.SECRET_TOKEN1 }}"
 
       
 
@@ -41,5 +50,5 @@ jobs:
        - name: Build and test
          run: |
            echo "var2 => ${{ inputs.var2 }} Build and Test .... This is next build in called workflow 1"
-          
+           echo "secret token 2 => ${{ secrets.SECRET_TOKEN2 }}"
  
