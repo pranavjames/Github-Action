@@ -11,6 +11,9 @@ jobs:
        with: 
           var1: "Hello"
           var2: 20
+       secrets:
+          SECRET_TOKEN1: ${{ secrets.DOCKERHUB_USERNAME }}
+          SECRET_TOKEN2: ${{ secrets.DOCKERHUB_TOKEN }}   
 
   call_workflow_2:
        uses: ./.github/workflows/called_workflow_2.yml     
