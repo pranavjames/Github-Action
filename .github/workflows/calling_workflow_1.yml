@@ -7,4 +7,7 @@ on:
 
 jobs:
   call_workflow_1:
-        uses: ./.github/workflows/called_workflow_1.yml
+       uses: ./.github/workflows/called_workflow_1.yml
+
+  call_workflow_2:
+       uses: ./.github/workflows/called_workflow_2.yml     
