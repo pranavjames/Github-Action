@@ -19,7 +19,7 @@ jobs:
   call_workflow_use_matrix:
        strategy:
           matrix:
-           vars: [var1, var2, var3]
+           vars: ["var1", "var2", "var3"]
        uses: ./.github/workflows/called_workflow_1.yml
        with: 
           var1: ${{ matrix.vars }}
